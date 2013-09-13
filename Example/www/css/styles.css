@@ -1,0 +1,78 @@
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#ecf0f1;
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.hidden {
+	display: none;
+}
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+
+/*Shamefully borrowed from http://cssdeck.com/labs/full/beautiful-flat-buttons*/
+.button {
+  position: relative;
+  vertical-align: top;
+  width: 70%;
+  height: 44px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #27ae60;
+  border: 0;
+  border-bottom: 2px solid #219d55;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 -2px #219d55;
+  box-shadow: inset 0 -2px #219d55;
+}
+
+.button:active, .button.active {
+  top: 1px;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.button.dark {
+  background: #c0392b;
+  border-bottom: 2px solid #b53224;
+  -webkit-box-shadow: inset 0 -2px #b53224;
+  box-shadow: inset 0 -2px #b53224;
+}
+
+#content {
+	width: 100%;
+}
+
+#analytics-view {
+
+}

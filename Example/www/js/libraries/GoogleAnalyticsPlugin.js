@@ -17,16 +17,20 @@ GoogleAnalyticsPlugin.prototype.endSession = function () {
 }
 
 GoogleAnalyticsPlugin.prototype.anonymizeTracking = function (anonymize) {
-	cordova.exec(null, null, "GoogleAnalyticsPlugin", "anonymizeTracking", [anonymize]);
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "anonymizeTracking", []);
+}
+
+GoogleAnalyticsPlugin.prototype.setDispatchInterval = function (dispatchInterval) {
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "setDispatchInterval", [dispatchInterval]);
+}
+
+GoogleAnalyticsPlugin.prototype.dispatchTrackedQueue = function () {
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "dispatchTrackedQueue", []);
 }
 
 /*
  *	Tracking
  */
-
-GoogleAnalyticsPlugin.prototype.sendView = function (viewName) {
-	cordova.exec(success, failure, "GoogleAnalyticsPlugin", "sendView", [viewName]);
-}
 
 GoogleAnalyticsPlugin.prototype.sendEvent = function (category, action, label, value) {
 	var options = {
@@ -38,6 +42,14 @@ GoogleAnalyticsPlugin.prototype.sendEvent = function (category, action, label, v
 	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendEvent", [options]);
 }
 
+GoogleAnalyticsPlugin.prototype.sendException = function (fatal, description) {
+	var options = {
+		fatal: fatal,
+		description: description
+	};
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendException", [options]);
+}
+
 GoogleAnalyticsPlugin.prototype.sendSocial = function (network, action, target) {
 	var options = {
 		network: network,
@@ -45,18 +57,6 @@ GoogleAnalyticsPlugin.prototype.sendSocial = function (network, action, target) 
 		target: target
 	};
 	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendSocial", [options]);
-}
-
-GoogleAnalyticsPlugin.prototype.sendTransaction = function (transaction) {
-	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendTransaction", [transaction]);
-}
-
-GoogleAnalyticsPlugin.prototype.sendException = function (fatal, description) {
-	var options = {
-		fatal: fatal,
-		description: description
-	};
-	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendException", [options]);
 }
 
 GoogleAnalyticsPlugin.prototype.sendTiming = function (category, time, name, label) {
@@ -67,6 +67,14 @@ GoogleAnalyticsPlugin.prototype.sendTiming = function (category, time, name, lab
 		label: label
 	};
 	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendTiming", [options]);
+}
+
+GoogleAnalyticsPlugin.prototype.sendTransaction = function (transaction) {
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendTransaction", [transaction]);
+}
+
+GoogleAnalyticsPlugin.prototype.sendView = function (viewName) {
+	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendView", [viewName]);
 }
 
 /*

@@ -10,6 +10,8 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
             "touchend .start-session": "startNewSessionTapped",
             "touchend .end-session": "endCurrentSessionTapped",
             "touchend .anonymize": "anonymizeTrackingTapped",
+            "touchend .set-dispatch-interval": "setDispatchIntervalTapped",
+            "touchend .dispatch-queue": "dispatchQueueTapped",
             "touchend .send-event": "sendEventTapped",
             "touchend .send-exception": "sendExceptionTapped",
             "touchend .send-social": "sendSocialTapped",
@@ -46,6 +48,16 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         	e.preventDefault();
         	console.log('anonymize tracking');
         	anonymizeAnalyticTracking(true);
+        },
+
+        setDispatchIntervalTapped: function (e) {
+        	e.preventDefault();
+        	setAnalyticDispatchInterval(30.0);
+        },
+
+        dispatchQueueTapped: function (e) {
+        	e.preventDefault();
+        	dispatchAnalyticQueue();
         },
 
         sendEventTapped: function	(e) {

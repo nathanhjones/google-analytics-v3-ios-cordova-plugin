@@ -31,19 +31,19 @@ function anonymizeAnalyticTracking (anonymize) {
 	}
 }
 
-function setAnalyticDimension (index, name) {
+function setAnalyticDispatchInterval (dispatchInterval) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.setCustomDimension(index, name);
+		window.plugins.googleAnalytics.setDispatchInterval(dispatchInterval);
 	}
 }
 
-function sendAnalyticView (viewName) {
+function dispatchAnalyticQueue () {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendView(viewName);
+		window.plugins.googleAnalytics.dispatchTrackedQueue();
 	}
 }
 
@@ -55,11 +55,27 @@ function sendAnalyticEvent (category, action, label, value) {
 	}
 }
 
+function sendAnalyticException (fatal, description) {
+	"use strict";
+
+	if (window.plugins.googleAnalytics) {
+		window.plugins.googleAnalytics.sendException(fatal, description);
+	}
+}
+
 function sendAnalyticSocial (network, action, target) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
 		window.plugins.googleAnalytics.sendSocial(network, action, target);
+	}
+}
+
+function sendAnalyticTiming (category, time, name, label) {
+	"use strict";
+
+	if (window.plugins.googleAnalytics) {
+		window.plugins.googleAnalytics.sendTiming(category, time, name, label);
 	}
 }
 
@@ -71,18 +87,18 @@ function sendAnalyticTransaction (transactionId, affiliate, items) {
 	}
 }
 
-function sendAnalyticException (fatal, description) {
+function sendAnalyticView (viewName) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendException(fatal, description);
+		window.plugins.googleAnalytics.sendView(viewName);
 	}
 }
 
-function sendAnalyticTiming (category, time, name, label) {
+function setAnalyticDimension (index, name) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendTiming(category, time, name, label);
+		window.plugins.googleAnalytics.setCustomDimension(index, name);
 	}
 }

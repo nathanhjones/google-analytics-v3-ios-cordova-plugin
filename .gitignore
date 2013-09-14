@@ -16,3 +16,8 @@ profile
 *.moved-aside
 DerivedData
 .idea/
+
+# Sublime Project
+*.sublime-project
+*.sublime-workspace
+makefile

@@ -48,6 +48,7 @@
 		F6F31E7017E2C746001E2AFC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F31E6E17E2C73C001E2AFC /* AdSupport.framework */; };
 		F6F31E7317E2C76E001E2AFC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F31E7117E2C757001E2AFC /* CoreData.framework */; };
 		F6F31E7517E2C827001E2AFC /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F31E7417E2C827001E2AFC /* libGoogleAnalyticsServices.a */; };
+		F6F31E7817E2CFF2001E2AFC /* GoogleAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F6F31E7717E2CFF2001E2AFC /* GoogleAnalyticsPlugin.m */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,8 @@
 		F6F31E6E17E2C73C001E2AFC /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		F6F31E7117E2C757001E2AFC /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F6F31E7417E2C827001E2AFC /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		F6F31E7617E2CFF2001E2AFC /* GoogleAnalyticsPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleAnalyticsPlugin.h; sourceTree = "<group>"; };
+		F6F31E7717E2CFF2001E2AFC /* GoogleAnalyticsPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleAnalyticsPlugin.m; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = GA3Example/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +327,8 @@
 		F6F31E6517E2C666001E2AFC /* Google Analytics */ = {
 			isa = PBXGroup;
 			children = (
+				F6F31E7617E2CFF2001E2AFC /* GoogleAnalyticsPlugin.h */,
+				F6F31E7717E2CFF2001E2AFC /* GoogleAnalyticsPlugin.m */,
 				F6F31E6617E2C666001E2AFC /* GAI.h */,
 				F6F31E6717E2C666001E2AFC /* GAIDictionaryBuilder.h */,
 				F6F31E6817E2C666001E2AFC /* GAIFields.h */,
@@ -456,6 +461,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
+				F6F31E7817E2CFF2001E2AFC /* GoogleAnalyticsPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

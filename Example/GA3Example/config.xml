@@ -11,6 +11,10 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="GoogleAnalyticsPlugin">
+        <param name="ios-package" value="GoogleAnalyticsPlugin" />
+        <param name="onload" value="true" />
+    </feature>
     <access origin="*" />
     <preference name="KeyboardDisplayRequiresUserAction" value="true" />
     <preference name="SuppressesIncrementalRendering" value="false" />

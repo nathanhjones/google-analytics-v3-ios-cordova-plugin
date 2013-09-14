@@ -17,7 +17,9 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
             "touchend .send-social": "sendSocialTapped",
             "touchend .send-timing": "sendTimingTapped",
             "touchend .send-transaction": "sendTransactionTapped",
-            "touchend .send-view": "sendViewTapped"
+            "touchend .send-view": "sendViewTapped",
+            "touchend .set-dimension": "setDimensionTapped",
+            "touchend .set-metric": "setMetricTapped"
         },
 
         render: function () {
@@ -46,8 +48,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
 
         anonymizeTrackingTapped: function (e) {
         	e.preventDefault();
-        	console.log('anonymize tracking');
-        	anonymizeAnalyticTracking(true);
+        	anonymizeAnalyticTracking();
         },
 
         setDispatchIntervalTapped: function (e) {
@@ -92,7 +93,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         	e.preventDefault();
         	var category = 'api',
         		time = 2.0,
-        		name = 'fetchRandomResource',
+        		name = '/user/123',
         		label = 'WiFi';
 
         	sendAnalyticTiming(category, time, name, label);
@@ -133,9 +134,25 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
 
         sendViewTapped: function (e) {
         	e.preventDefault();
-        	var viewTitle = 'analytics-view';
+        	var viewName = 'analytics-view';
 
-        	sendAnalyticView(viewTitle);
+        	sendAnalyticView(viewName);
+        },
+
+        setDimensionTapped: function (e) {
+        	e.preventDefault();
+        	var index = 1,
+        		name = 'offline';
+
+        	setAnalyticDimension(index, name);
+        },
+
+        setMetricTapped: function (e) {
+        	e.preventDefault();
+        	var index = 1,
+        		value = 5;
+
+        	setAnalyticMetric(index, value);
         }
     });
 

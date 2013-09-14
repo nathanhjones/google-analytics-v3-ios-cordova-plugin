@@ -2,8 +2,7 @@ function startAnalyticTracking () {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		//window.plugins.googleAnalytics.startTracking('UA-XXXYYYZZ-1');
-		window.plugins.googleAnalytics.startTracking('UA-43988926-1');
+		window.plugins.googleAnalytics.startTracking('UA-XXXYYYZZ-1');
 	}
 }
 
@@ -23,11 +22,11 @@ function endCurrentAnalyticSession () {
 	}
 }
 
-function anonymizeAnalyticTracking (anonymize) {
+function anonymizeAnalyticTracking () {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.anonymizeTracking(anonymize);
+		window.plugins.googleAnalytics.anonymizeTracking();
 	}
 }
 
@@ -79,11 +78,11 @@ function sendAnalyticTiming (category, time, name, label) {
 	}
 }
 
-function sendAnalyticTransaction (transactionId, affiliate, items) {
+function sendAnalyticTransaction (transaction) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendTransaction(transactionId, affiliate, items);
+		window.plugins.googleAnalytics.sendTransaction(transaction);
 	}
 }
 
@@ -100,5 +99,13 @@ function setAnalyticDimension (index, name) {
 
 	if (window.plugins.googleAnalytics) {
 		window.plugins.googleAnalytics.setCustomDimension(index, name);
+	}
+}
+
+function setAnalyticMetric (index, value) {
+	"use strict";
+
+	if (window.plugins.googleAnalytics) {
+		window.plugins.googleAnalytics.setCustomMetric(index, value);
 	}
 }

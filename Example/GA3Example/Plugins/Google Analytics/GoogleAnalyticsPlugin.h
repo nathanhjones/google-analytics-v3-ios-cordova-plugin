@@ -3,7 +3,7 @@
 //  GA3Example
 //
 //  Created by Nathan Jones on 9/13/13.
-//
+//  MIT Licensed
 //
 
 #import <Foundation/Foundation.h>

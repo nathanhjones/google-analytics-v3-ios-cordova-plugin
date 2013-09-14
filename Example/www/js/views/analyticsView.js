@@ -7,7 +7,8 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
 
         events: {
             "touchend .start-tracking": "startTrackingTapped",
-            "touchend .restart-session": "restartSessionTapped",
+            "touchend .start-session": "startNewSessionTapped",
+            "touchend .end-session": "endCurrentSessionTapped",
             "touchend .anonymize": "anonymizeTrackingTapped",
             "touchend .send-event": "sendEventTapped",
             "touchend .send-exception": "sendExceptionTapped",
@@ -15,11 +16,6 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
             "touchend .send-timing": "sendTimingTapped",
             "touchend .send-transaction": "sendTransactionTapped",
             "touchend .send-view": "sendViewTapped"
-        },
-
-        initialize: function () {
-        	this.eventSuccessCallback = _.bind(this.eventSuccessCallback, this);
-        	this.eventFailureCallback = _.bind(this.eventFailureCallback, this);
         },
 
         render: function () {
@@ -33,14 +29,17 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
 
         startTrackingTapped: function (e) {
         	e.preventDefault();
-        	console.log('start tracking');
         	startAnalyticTracking();
         },
 
-        restartSessionTapped: function (e) {
+        startNewSessionTapped: function (e) {
         	e.preventDefault();
-        	console.log('restart session');
-        	restartAnalyticTracking();
+        	startNewAnalyticSession();
+        },
+
+        endCurrentSessionTapped: function (e) {
+        	e.preventDefault();
+        	endCurrentAnalyticSession();
         },
 
         anonymizeTrackingTapped: function (e) {
@@ -57,7 +56,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         		value = 0;
 
         	// here is an example of the success / failure callbacks
-        	sendAnalyticEvent(this.eventSuccessCallback, this.eventFailureCallback, category, action, label, value);
+        	sendAnalyticEvent(category, action, label, value);
         },
 
         sendExceptionTapped: function (e) {
@@ -65,7 +64,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         	var fatalException = true,
         		description = 'This is embarassing';
 
-        	sendAnalyticException (null, null, fatalException, description)
+        	sendAnalyticException (fatalException, description)
         },
 
         sendSocialTapped: function (e) {
@@ -74,7 +73,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         		action = 'tweet',
         		target = 'https://github.com/nathanhjones/google-analytics-v2-ios-cordova-plugin';
 
-        	sendAnalyticSocial(null, null, network, action, target);
+        	sendAnalyticSocial(network, action, target);
         },
 
         sendTimingTapped: function (e) {
@@ -84,31 +83,39 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         		name = 'fetchRandomResource',
         		label = 'WiFi';
 
-        	sendAnalyticTiming(null, null, category, time, name, label);
+        	sendAnalyticTiming(category, time, name, label);
         },
 
         sendTransactionTapped: function (e) {
         	e.preventDefault();
-        	var transactionId = '12345',
-        		affiliate = 'Hybrid Store',
-        		items = [
+        	var transaction = {
+        		transactionId: '12345',
+        		affiliation: 'Hybrid Store',
+        		revenue: 13.629,
+        		tax: 0.649,
+        		shipping: 0,
+        		currency: 'USD',
+        		items: [
         			{
-        				productCode: '567',
         				productName: 'Hybrid Product One',
+        				productSKU: '1234',
         				productCategory: 'smartphone',
-        				price: 10990000,
-        				quantity: 1
+        				price: 10.99,
+        				quantity: 1,
+        				currency: 'USD'
         			},
         			{
-        				productCode: '432',
         				productName: 'Hybrid Product Two',
+        				productSKU: '4321',
         				productCategory: 'featurephone',
-        				price: 1990000,
-        				quantity: 1
+        				price: 1.99,
+        				quantity: 1,
+        				currency: 'USD'
         			}
-        		];
+        		]
+			};
 
-        	sendAnalyticTransaction (null, null, transactionId, affiliate, items);
+        	sendAnalyticTransaction (transaction);
 
         },
 
@@ -116,19 +123,7 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         	e.preventDefault();
         	var viewTitle = 'analytics-view';
 
-        	sendAnalyticView(null, null, viewTitle);
-        },
-
-        /*
-         *	Callbacks
-         */
-
-        eventSuccessCallback: function () {
-        	console.log('Event sent successfully.');
-        },
-
-        eventFailureCallback: function (error) {
-        	console.log('Unable to send event.');
+        	sendAnalyticView(viewTitle);
         }
     });
 

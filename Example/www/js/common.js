@@ -7,11 +7,19 @@ function startAnalyticTracking () {
 	}
 }
 
-function restartAnalyticTracking () {
+function startNewAnalyticSession () {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.restartTracking();
+		window.plugins.googleAnalytics.startSession();
+	}
+}
+
+function endCurrentAnalyticSession () {
+	"use strict";
+
+	if (window.plugins.googleAnalytics) {
+		window.plugins.googleAnalytics.endSession();
 	}
 }
 
@@ -31,50 +39,50 @@ function setAnalyticDimension (index, name) {
 	}
 }
 
-function sendAnalyticView (success, failure, viewName) {
+function sendAnalyticView (viewName) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendView(success, failure, viewName);
+		window.plugins.googleAnalytics.sendView(viewName);
 	}
 }
 
-function sendAnalyticEvent (success, failure, category, action, label, value) {
+function sendAnalyticEvent (category, action, label, value) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendEvent(success, failure, category, action, label, value);
+		window.plugins.googleAnalytics.sendEvent(category, action, label, value);
 	}
 }
 
-function sendAnalyticSocial (success, failure, network, action, target) {
+function sendAnalyticSocial (network, action, target) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendSocial(success, failure, network, action, target);
+		window.plugins.googleAnalytics.sendSocial(network, action, target);
 	}
 }
 
-function sendAnalyticTransaction (success, failure, transactionId, affiliate, items) {
+function sendAnalyticTransaction (transactionId, affiliate, items) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendTransaction(success, failure, transactionId, affiliate, items);
+		window.plugins.googleAnalytics.sendTransaction(transactionId, affiliate, items);
 	}
 }
 
-function sendAnalyticException (success, failure, fatal, description) {
+function sendAnalyticException (fatal, description) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendException(success, failure, fatal, description);
+		window.plugins.googleAnalytics.sendException(fatal, description);
 	}
 }
 
-function sendAnalyticTiming (success, failure, category, time, name, label) {
+function sendAnalyticTiming (category, time, name, label) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendTiming(success, failure, category, time, name, label);
+		window.plugins.googleAnalytics.sendTiming(category, time, name, label);
 	}
 }

@@ -92,11 +92,11 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
         sendTimingTapped: function (e) {
         	e.preventDefault();
         	var category = 'api',
-        		time = 2.0,
-        		name = '/user/123',
+        		milliseconds = 3000,
+        		name = '/user/987',
         		label = 'WiFi';
 
-        	sendAnalyticTiming(category, time, name, label);
+        	sendAnalyticTiming(category, milliseconds, name, label);
         },
 
         sendTransactionTapped: function (e) {

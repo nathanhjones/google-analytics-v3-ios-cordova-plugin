@@ -97,14 +97,14 @@
 - (void)sendTiming:(CDVInvokedUrlCommand *)command {
     NSDictionary *options = [command.arguments objectAtIndex:0];
 	NSString *category = [options valueForKey:@"category"];
-	NSTimeInterval time = [[options valueForKey:@"time"] doubleValue];
+	NSNumber *milliseconds = @([[options valueForKey:@"time"] intValue]);
     NSString *name = [options valueForKey:@"name"];
     NSString *label = [options valueForKey:@"label"];
     
     [GoogleAnalyticsPlugin setVersionParameter];
     
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createTimingWithCategory:category
-                                                                                     interval:@(time)
+                                                                                     interval:milliseconds
                                                                                          name:name
                                                                                         label:label] build]];
 }

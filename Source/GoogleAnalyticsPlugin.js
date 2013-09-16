@@ -59,10 +59,10 @@ GoogleAnalyticsPlugin.prototype.sendSocial = function (network, action, target) 
 	cordova.exec(null, null, "GoogleAnalyticsPlugin", "sendSocial", [options]);
 }
 
-GoogleAnalyticsPlugin.prototype.sendTiming = function (category, time, name, label) {
+GoogleAnalyticsPlugin.prototype.sendTiming = function (category, milliseconds, name, label) {
 	var options = {
 		category: category,
-		time: time,
+		time: milliseconds,
 		name: name,
 		label: label
 	};

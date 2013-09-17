@@ -46,11 +46,11 @@ function dispatchAnalyticQueue () {
 	}
 }
 
-function sendAnalyticEvent (category, action, label, value) {
+function sendAnalyticEvent (view, category, action, label, value) {
 	"use strict";
 
 	if (window.plugins.googleAnalytics) {
-		window.plugins.googleAnalytics.sendEvent(category, action, label, value);
+		window.plugins.googleAnalytics.sendEvent(view, category, action, label, value);
 	}
 }
 

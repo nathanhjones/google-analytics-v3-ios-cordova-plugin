@@ -57,17 +57,28 @@
 
 - (void)sendEvent:(CDVInvokedUrlCommand *)command {
     NSDictionary *options = [command.arguments objectAtIndex:0];
-	NSString *category = [options valueForKey:@"category"];
+	NSString *view = (![[options valueForKey:@"view"] isEqual:[NSNull null]]) ? [options valueForKey:@"view"] : nil;
+    NSString *category = [options valueForKey:@"category"];
 	NSString *action = [options valueForKey:@"action"];
 	NSString *label = (![[options valueForKey:@"label"] isEqual:[NSNull null]]) ? [options valueForKey:@"label"] : nil;
 	NSNumber *value = (![[options valueForKey:@"value"] isEqual:[NSNull null]]) ? @([[options valueForKey:@"value"] intValue]) : nil;
     
     [GoogleAnalyticsPlugin setVersionParameter];
     
+    // associate this event with a specific view if passed
+    if (view) {
+        [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                           value:view];
+    }
+    
     [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:category
                                                                                      action:action
                                                                                       label:label
                                                                                       value:value] build]];
+    
+    // clear any view property set
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName
+                                       value:nil];
 }
 
 - (void)sendException:(CDVInvokedUrlCommand *)command {

@@ -64,13 +64,16 @@ Additional information can be found [here](https://developers.google.com/analyti
 ###Tracking
 ####Events
 Events allow you to measure how your users are interacting with the different components of your app. How you organize your events is completely up to you but below is an example of the tap of a button. Additional information can be found [here](https://developers.google.com/analytics/devguides/collection/ios/v3/events).
+
+Events can be associated with the specific view on which they occurred by specifying a value for the `view` parameter. If you do not wish for an event to be associated with a specific view, pass `null`. In the example below, I'm tracking a button tap event on the analytic view.
 		
-		var category = 'uiAction',
+		var view = 'analytics-view',
+			category = 'uiAction',
         	action = 'buttonTapped',
         	label = 'sendEventButton',
         	value = 0;
         	
-		window.plugins.googleAnalytics.sendEvent(category, action, label, value);
+		window.plugins.googleAnalytics.sendEvent(view, category, action, label, value);
 ####Exceptions
 While probably not as likely to happen within your app this function allows you to measure exceptions. This could be repurposed for your app to track issues where a library doesn't load, exceptions in try statement, or maybe even monitoring remote API errors. Additional information can be found [here](https://developers.google.com/analytics/devguides/collection/ios/v3/exceptions).
 

@@ -63,13 +63,14 @@ define([ "jquery", "backbone", "templates", "common"], function ($, Backbone) {
 
         sendEventTapped: function	(e) {
         	e.preventDefault();
-        	var category = 'uiAction',
+        	var view = 'analytics-view',
+        		category = 'uiAction',
         		action = 'buttonTapped',
-        		label = 'sendEventButton',
+        		label = 'sendEventButtonWithView',
         		value = 0;
 
         	// here is an example of the success / failure callbacks
-        	sendAnalyticEvent(category, action, label, value);
+        	sendAnalyticEvent(view, category, action, label, value);
         },
 
         sendExceptionTapped: function (e) {

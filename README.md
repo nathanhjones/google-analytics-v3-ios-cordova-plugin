@@ -97,11 +97,11 @@ User specific timings allow you to measure the time it takes to complete certain
 Additional information can be found [here](https://developers.google.com/analytics/devguides/collection/ios/v3/usertimings).
 
 		var category = 'api',
-        	time = 2.0,
+        	milliseconds = 3000,
         	name = '/user/123',
         	label = 'WiFi';
         	
-        window.plugins.googleAnalytics.sendTiming(category, time, name, label);
+        window.plugins.googleAnalytics.sendTiming(category, milliseconds, name, label);
 ####Transactions
 Tracking transactions allow you to track sales and in-app purchases. The plugin expects the transaction structure defined below. You have several options of abstracting this from your UI with helper methods but has been left as an implementation detail for your specific project. Additional information can be found [here](https://developers.google.com/analytics/devguides/collection/ios/v3/ecommerce).
 

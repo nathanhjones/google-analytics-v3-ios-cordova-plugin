@@ -32,8 +32,9 @@ GoogleAnalyticsPlugin.prototype.dispatchTrackedQueue = function () {
  *	Tracking
  */
 
-GoogleAnalyticsPlugin.prototype.sendEvent = function (category, action, label, value) {
+GoogleAnalyticsPlugin.prototype.sendEvent = function (view, category, action, label, value) {
 	var options = {
+		view: view,
 		category: category,
 		action: action,
 		label: label,

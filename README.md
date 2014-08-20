@@ -80,7 +80,7 @@ While probably not as likely to happen within your app this function allows you 
 		var fatalException = true,
         	description = 'This is embarassing';
         	
-        window.plugins.googleAnalytics.sendException(fatal, description);
+        window.plugins.googleAnalytics.sendException(fatalException, description);
 ####Social
 This function allows you to track various social interactions within your app. Perhaps you want to track the number of times someone tweets about a URL from your news reader app or how many times they like it on facebook. The example below shamelessly tracks the number of times within the sample app that you tweet a link to this repo.
 
